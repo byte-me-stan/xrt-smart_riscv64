@@ -54,6 +54,11 @@ rt_inline unsigned long ffz(unsigned long x)
     return __builtin_ffs(~x) - 1;
 }
 
+rt_inline void icache_invalid_all(void)
+{
+
+}
+
 #ifdef __cplusplus
 }
 #endif
