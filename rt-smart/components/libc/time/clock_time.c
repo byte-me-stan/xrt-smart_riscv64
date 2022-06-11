@@ -173,12 +173,15 @@ int clock_settime(clockid_t clockid, const struct timespec *tp)
     _timevalue.tv_usec = MICROSECOND_PER_SECOND - (tick % RT_TICK_PER_SECOND) * MICROSECOND_PER_TICK;
     _timevalue.tv_sec = second - tick/RT_TICK_PER_SECOND - 1;
 
+
     /* update for RTC device */
     device = rt_device_find("rtc");
     if (device != RT_NULL)
     {
+#ifdef RT_USING_RTC
         /* set realtime seconds */
         rt_device_control(device, RT_DEVICE_CTRL_RTC_SET_TIME, &second);
+#endif
     }
     else
         return -1;
