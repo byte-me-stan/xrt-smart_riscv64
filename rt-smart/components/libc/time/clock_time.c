@@ -37,7 +37,6 @@ int clock_time_system_init()
     return 0;
 }
 INIT_COMPONENT_EXPORT(clock_time_system_init);
-#endif
 
 int clock_time_to_tick(const struct timespec *time)
 {
@@ -178,10 +177,8 @@ int clock_settime(clockid_t clockid, const struct timespec *tp)
     device = rt_device_find("rtc");
     if (device != RT_NULL)
     {
-#ifdef RT_USING_RTC
         /* set realtime seconds */
         rt_device_control(device, RT_DEVICE_CTRL_RTC_SET_TIME, &second);
-#endif
     }
     else
         return -1;
@@ -189,3 +186,4 @@ int clock_settime(clockid_t clockid, const struct timespec *tp)
     return 0;
 }
 RTM_EXPORT(clock_settime);
+#endif
