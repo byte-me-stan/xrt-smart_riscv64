@@ -3781,7 +3781,11 @@ int sys_clock_settime(clockid_t clk, const struct timespec *ts)
     }
     now = ts->tv_sec;
 #endif
+#ifdef RT_USING_RTC
     return rt_device_control(device, RT_DEVICE_CTRL_RTC_SET_TIME, &now);
+#else
+    return -RT_ERROR;
+#endif
 }
 
 int sys_clock_gettime(clockid_t clk, struct timespec *ts)
@@ -3795,7 +3799,11 @@ int sys_clock_gettime(clockid_t clk, struct timespec *ts)
     {
         return -ENODEV;
     }
+#ifdef RT_USING_RTC
     ret = rt_device_control(device, RT_DEVICE_CTRL_RTC_GET_TIME, &now);
+#else
+    ret = -RT_ERROR;
+#endif
 
 #ifdef RT_USING_USERSPACE
     size_t size = sizeof(struct timespec);
