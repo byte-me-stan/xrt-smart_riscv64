@@ -111,7 +111,7 @@ RTM_EXPORT(clock_getres);
 int clock_gettime(clockid_t clockid, struct timespec *tp)
 {
     int ret = 0;
-
+#ifdef RT_USING_RTC
     if (tp == RT_NULL)
     {
         rt_set_errno(EINVAL);
@@ -148,7 +148,7 @@ int clock_gettime(clockid_t clockid, struct timespec *tp)
         rt_set_errno(EINVAL);
         ret = -1;
     }
-
+#endif
     return ret;
 }
 RTM_EXPORT(clock_gettime);
