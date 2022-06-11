@@ -9,7 +9,7 @@
 #include <sys/time.h>
 #include <rtdevice.h>
 
-#ifdef RT_USING_DEVICE
+#ifdef RT_USING_RTC
 int gettimeofday(struct timeval *tp, void *ignore)
 {
     time_t time;
