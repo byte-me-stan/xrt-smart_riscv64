@@ -121,6 +121,6 @@ int rt_hw_cpu_id(void)
     return 0;   /* d1 has one core */
 }
 
-void set_process_id(size_t id)
+void set_process_id(int pid)
 {
 }
