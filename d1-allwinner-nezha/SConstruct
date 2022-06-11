@@ -4,6 +4,11 @@ import rtconfig
 
 from rtconfig import RTT_ROOT
 
+if os.getenv('RTT_ROOT'):
+    RTT_ROOT = os.getenv('RTT_ROOT')
+else:
+    RTT_ROOT = os.path.normpath(os.getcwd() + '/../rt-smart')
+
 sys.path = sys.path + [os.path.join(RTT_ROOT, 'tools')]
 from building import *
 
