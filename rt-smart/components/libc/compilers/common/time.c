@@ -217,7 +217,7 @@ char* ctime(const time_t *timep)
 int gettimeofday(struct timeval *tp, void *ignore)
 {
     time_t time = 0;
-#ifdef RT_USING_DEVICE
+#ifdef RT_USING_RTC
     rt_device_t device;
     device = rt_device_find("rtc");
     RT_ASSERT(device != RT_NULL);
@@ -228,8 +228,8 @@ int gettimeofday(struct timeval *tp, void *ignore)
         tp->tv_usec = 0;
     }
 #else
-    tv->tv_sec = 0;
-    tv->tv_usec = 0;
+    tp->tv_sec = 0;
+    tp->tv_usec = 0;
 #endif
 
     return time;

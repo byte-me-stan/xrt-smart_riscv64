@@ -280,7 +280,7 @@ _gettimeofday_r(struct _reent *ptr, struct timeval *__tp, void *__tzp)
 #define NANOSECOND_PER_TICK     (NANOSECOND_PER_SECOND  / RT_TICK_PER_SECOND)
 
 struct timeval _timevalue = {0};
-#ifdef RT_USING_DEVICE
+#ifdef RT_USING_RTC
 static void libc_system_time_init(void)
 {
     time_t time;

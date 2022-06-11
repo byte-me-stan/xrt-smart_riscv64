@@ -12,6 +12,7 @@
 #include <rtdevice.h>
 #include "clock_time.h"
 
+#ifdef RT_USING_RTC
 static struct timeval _timevalue;
 int clock_time_system_init()
 {
@@ -36,6 +37,7 @@ int clock_time_system_init()
     return 0;
 }
 INIT_COMPONENT_EXPORT(clock_time_system_init);
+#endif
 
 int clock_time_to_tick(const struct timespec *time)
 {
