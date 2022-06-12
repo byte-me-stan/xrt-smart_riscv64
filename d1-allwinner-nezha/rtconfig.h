@@ -160,6 +160,11 @@
 
 /* language packages */
 
+/* JSON: JavaScript Object Notation, a lightweight data-interchange format */
+
+
+/* XML: Extensible Markup Language */
+
 
 /* multimedia packages */
 
@@ -180,6 +185,9 @@
 /* enhanced kernel services */
 
 
+/* POSIX extension functions */
+
+
 /* acceleration: Assembly language or algorithmic acceleration packages */
 
 
@@ -196,6 +204,8 @@
 
 
 /* miscellaneous packages */
+
+/* project laboratory */
 
 /* samples: kernel and components samples */
 
