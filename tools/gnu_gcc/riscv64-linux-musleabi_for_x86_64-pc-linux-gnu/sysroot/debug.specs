@@ -1,0 +1,16 @@
+%rename link                debug_link
+%rename link_gcc_c_sequence                debug_link_gcc_c_sequence
+
+*debug_libc:
+-lc_debug
+
+*link_gcc_c_sequence:
+%(debug_link_gcc_c_sequence) --start-group %G %(debug_libc) --end-group
+
+*link:
+%(debug_link) %:replace-outfile(-lc -lc_debug) 
+
+*lib:
+%{!shared:%{!p:%{!pg:-lc_debug}}%{p:-lc_p}%{pg:-lc_p}}
+
+# ??? Maybe put --gc-sections option in here?

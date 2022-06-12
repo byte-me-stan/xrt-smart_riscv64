@@ -1,0 +1,16 @@
+%rename link                kernel_link
+%rename link_gcc_c_sequence                kernel_link_gcc_c_sequence
+
+*kernel_libc:
+-lc_kernel
+
+*link_gcc_c_sequence:
+%(kernel_link_gcc_c_sequence) --start-group %G %(kernel_libc) --end-group
+
+*link:
+%(kernel_link) %:replace-outfile(-lc -lc_kernel)
+
+*lib:
+%{!shared:%{!p:%{!pg:-lc_kernel}}%{p:-lc_p}%{pg:-lc_p}}
+
+# ??? Maybe put --gc-sections option in here?
