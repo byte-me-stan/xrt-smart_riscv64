@@ -28,6 +28,16 @@ gcc version 10.1.0 (GCC)
 ## 用户apps
 - 待续
 
+## windows 编译环境
+
+- 打开 RT-Thread ENV 工具，menuconfig 保存可能修改会比较大，这部分后面研究如何规避，Linux 环境下还算正常
+
+- `smart-env.bat` 配置好 交叉工具链
+
+- `scons` 编译，如果编译不过，可能是Git 拉取代码引起的【回车换行符】导致，这个问题后面有时间确认下
+
+- `mkimg.bat` 生成 img 文件（当前u-boot 引导好像存在问题，TODO）
+
 
 ## 经验分享
 
