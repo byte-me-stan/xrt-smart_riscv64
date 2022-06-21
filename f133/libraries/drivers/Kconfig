@@ -1,0 +1,82 @@
+menu "General Drivers Configuration"
+
+menu "General Purpose UARTs"
+
+menuconfig BSP_USING_UART1
+    bool "Enable UART1"
+    default n
+    if BSP_USING_UART1
+        config BSP_UART1_TXD_PIN
+            int "uart1 TXD pin number"
+            default 20
+        config BSP_UART1_RXD_PIN
+            int "uart1 RXD pin number"
+            default 21
+    endif
+menuconfig BSP_USING_DIRECT_UART
+    bool "Enable direct uart"
+    default y
+
+endmenu
+
+config BSP_USING_WDT
+    bool "Enable watchdog driver"
+    default y
+
+config BSP_SDMMC_FIX_PART
+    bool "fix sdmmc part table if needed."
+    default y
+
+config BSP_USING_HWTIMER0
+    bool "Enable timer0"
+    default y
+
+config BSP_USING_HWTIMER1
+    bool "Enable timer1"
+    default y
+
+config BSP_USING_AVS
+    bool "Enable avs driver"
+    default y
+
+config BSP_USING_RTC
+    bool "Enable rtc driver"
+    default y
+
+menuconfig BSP_USING_I2C
+    bool "Enable I2C driver"
+    default y
+
+    if BSP_USING_I2C
+    config BSP_USING_I2C0
+        bool "Enable I2C0"
+        default n
+    config BSP_USING_I2C1
+        bool "Enable I2C1"
+        default n
+    config BSP_USING_I2C2
+        bool "Enable I2C2"
+        default y
+    config BSP_USING_I2C3
+        bool "Enable I2C3"
+        default n
+    endif
+
+config BSP_USING_TOUCH
+    bool "Enable TOUCH"
+    default y
+    if BSP_USING_TOUCH
+    config TOUCH_I2C_NAME
+        string "touch i2c driver name"
+        default "i2c2"
+    endif
+
+config BSP_USING_LCD
+    bool "Enable LCD"
+    default y
+
+config BSP_USING_PWM
+    bool "Enable PWM"
+    default y
+
+endmenu
